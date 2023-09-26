@@ -82,7 +82,7 @@ function Gen.update_with_state(::MySum, state, args, argdiffs::Tuple{VectorDiff}
         retval += arr[i]
     end
     for i=new_length+1:prev_length
-        retval -= arr[i]
+        retval -= state.prev_arr[i]
     end
     state = MyState(arr, retval)
     (state, retval, UnknownChange())
